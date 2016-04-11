@@ -1,5 +1,7 @@
+#! /bin/bash
 
-git pull /root/cephos-aart-config/
+cd /root/cephos-aart-config
+git pull -f
 
 docker-compose rm -f
 docker-compose pull
