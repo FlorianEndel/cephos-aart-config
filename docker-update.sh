@@ -2,7 +2,7 @@
 
 
 cd /root/cephos-aart
-git clean -f -d
+git clean -fd
 git reset --hard origin/master
 git pull -f
 
