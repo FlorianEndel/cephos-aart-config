@@ -1,6 +1,14 @@
 #! /bin/bash
 
+
+cd /root/cephos-aart
+git clean -f -d
+git reset --hard origin/master
+git pull -f
+
+
 cd /root/cephos-aart-config
+git reset --hard origin/master
 git pull -f
 
 docker-compose rm -f
