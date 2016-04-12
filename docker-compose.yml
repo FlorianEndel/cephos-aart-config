@@ -9,15 +9,15 @@ services:
       - "80:80"
       - "443:443"
       #- "8080:8080"
-    volumes:
-      - /root/cephos-aart-config/nginx-reverse/www:/var/www/
-      - /root/cephos-aart-config/nginx-reverse/SSL:/var/ssl
-      - /root/cephos-aart-config/nginx-reverse/htaccess:/var/htaccess
-      - /root/cephos-aart-config/nginx-reverse/nginx:/etc/nginx
+    #volumes:
+      #- /root/cephos-aart-config/nginx-reverse/www:/var/www/
+      #- /root/cephos-aart-config/nginx-reverse/SSL:/var/ssl
+      #- /root/cephos-aart-config/nginx-reverse/htaccess:/var/htaccess
+      #- /root/cephos-aart-config/nginx-reverse/nginx:/etc/nginx
 
   shiny:
     image: floe/shiny-custom
     volumes:
-      - /aart:/root/cephos-art
+      - /aart:/root/cephos-aart
 
 
