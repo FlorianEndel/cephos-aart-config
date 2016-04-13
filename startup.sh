@@ -26,6 +26,7 @@ echo "CEPHOS AART Config"
 echo "#############"
 
 cd /root/cephos-aart-config
+git clean -fd
 git reset --hard origin/master
 git pull -f
 
