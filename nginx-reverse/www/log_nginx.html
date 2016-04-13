@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <!-- The jQuery library is a prerequisite for all jqSuite products -->
+    <script type="text/ecmascript" src="js/jquery-2.2.3.min.js"></script> 
+    <!-- We support more than 40 localizations -->
+    <script type="text/ecmascript" src="js/grid.locale-en.js"></script>
+    <!-- This is the Javascript file of jqGrid -->   
+    <script type="text/ecmascript" src="js/jquery.jqGrid.min.js"></script>
+    <!-- A link to a Boostrap  and jqGrid Bootstrap CSS siles-->
+    <link rel="stylesheet" href="css/bootstrap.min.css"> 
+    <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid-bootstrap.css" />
+    
+    <script>
+	    $.jgrid.defaults.width = 1000;
+	    $.jgrid.defaults.responsive = true;
+	    $.jgrid.defaults.styleUI = 'Bootstrap';
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/ecmascript" src="js/bootstrap-datepicker.min.js"></script> 
+    <script type="text/ecmascript" src="js/bootstrap3-typeahead.min.js"></script> 
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-datepicker.min.css" />
+
+    <style type="text/css">
+      .ui-jqgrid tr.jqgrow td {
+	  white-space: normal !important;
+      }
+    </style>
+    
+    <meta charset="utf-8" />
+    <title>Logging data</title>
+</head>
+<body>
+<div style="margin-left:20px">
+    <table id="jqGrid"></table>
+    <div id="jqGridPager"></div>
+</div>
+    <script type="text/javascript"> 
+
+        
+    $.get("logs/docker_nginx.log", function(txt) {
+    
+      var json = new Array();
+      var lines = txt.split("\n");
+      for (var i = 0, len = lines.length; i < len; i++) {
+	  json = json.concat(JSON.parse(lines[i]));
+      }
+      console.log(json); // this will show the info it in firebug console
+
+      
+
+      $(document).ready(function () {
+            $("#jqGrid").jqGrid({
+                datatype: "local",
+		data: json,
+                colModel: [
+                    { 
+		      label: 'time', name: 'time', width: "30px" ,
+		      sorttype:'date',
+                      searchoptions: {
+                            // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
+                            // use it to place a third party control to customize the toolbar
+                            dataInit: function (element) {
+                               $(element).datepicker({
+				  autoclose: true,
+				  format: 'yyyy-mm-dd',
+				  orientation : 'bottom'
+                                });
+                            },
+                            // show search options
+                            sopt: ["ge","le","eq"] // ge = greater or equal to, le = less or equal to, eq = equal to							
+                        }
+                    },
+                    { label: 'Message', name: 'log', width: "110px", sorttype:"string",
+                        searchoptions: {sopt:['cn', 'eq','ne']}
+		    }
+                    //,{ label: 'stream', name: 'stream', width: 10 }
+                ],
+                viewrecords: true, // show the current page, data rang and total records on the toolbar
+                caption: "Log",
+		viewrecords: true,
+                rowNum: 100,
+                pager: "#jqGridPager",
+                rownumbers: true, // show row numbers
+                rownumWidth: 35, // the width of the row numbers columns
+                loadonce:true,
+                gridview:true,
+                autowidth: true,
+                height: 600
+            });
+	    
+	    // activate the toolbar searching
+            $('#jqGrid').jqGrid('filterToolbar',{
+                // JSON stringify all data from search, including search toolbar operators
+                stringResult: true,
+                // instuct the grid toolbar to show the search options
+                searchOperators: true,
+                searchOnEnter: false,
+                defaultSearch:'cn'
+            });
+        });
+    });
+    
+        
+
+    </script>
+
+    
+</body>
+</html>

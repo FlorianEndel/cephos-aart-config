@@ -9,8 +9,8 @@ services:
       - "80:80"
       - "443:443"
       #- "8080:8080"
-    #volumes:
-      #- /root/cephos-aart-config/nginx-reverse/www:/var/www/
+    volumes:
+      - /root/cephos-aart-config/nginx-reverse/www:/usr/share/nginx/html:ro
       #- /root/cephos-aart-config/nginx-reverse/SSL:/var/ssl
       #- /root/cephos-aart-config/nginx-reverse/htaccess:/var/htaccess
       #- /root/cephos-aart-config/nginx-reverse/nginx:/etc/nginx
