@@ -47,7 +47,7 @@ echo "Docker Logging"
 echo "#############"
 
 ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_reverse_nginx_1` /root/cephos-aart-config/nginx-reverse/www/logs/docker_nginx.log
-ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_reverse_shiny_1` /root/cephos-aart-config/nginx-reverse/www/logs/docker_nginx.log
+ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_reverse_shiny_1` /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 
 echo ""
 echo ""
