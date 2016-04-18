@@ -58,7 +58,7 @@ echo "#############"
 docker exec cephosaartconfig_shiny_1 ln -s /var/log/shiny-server /srv/shiny-server/log
 
 ## floe/shiny-custom:2016-04-18 --> Cairo is missing
-docker exec cephosaartconfig_shiny_1 R --no-save -e 'install.packages("Cairo")'
+#docker exec cephosaartconfig_shiny_1 R --no-save -e 'install.packages("Cairo")'
 
 
 echo ""
