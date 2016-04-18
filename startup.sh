@@ -37,6 +37,10 @@ echo "CEPHOS AART Config"
 echo "#############"
 
 cd /root/cephos-aart-config
+
+# remove all logs from nginx (in .dockerignore)
+rm -r /root/cephos-aart-config/nginx-reverse/www/logs/*
+
 git clean -fd
 git reset --hard origin/master
 git pull -f
@@ -61,11 +65,9 @@ echo ""
 echo "Docker Logging"
 echo "#############"
 
-rm /root/cephos-aart-config/nginx-reverse/www/logs/docker_nginx.log
 ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_reverse_nginx_1` /root/cephos-aart-config/nginx-reverse/www/logs/docker_nginx.log
 chmod +r /root/cephos-aart-config/nginx-reverse/www/logs/docker_nginx.log
 
-rm /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_shiny_1` /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 chmod +r /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 
