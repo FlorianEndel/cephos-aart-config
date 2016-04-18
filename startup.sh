@@ -9,6 +9,14 @@ echo ""
 
 
 
+echo ""
+echo "Docker Compose STOP"
+echo "#############"
+
+/usr/local/bin/docker-compose stop
+/usr/local/bin/docker-compose rm -f
+
+
 ### AART
 
 echo ""
@@ -33,11 +41,9 @@ git pull -f
 
 
 echo ""
-echo "Docker Compose"
+echo "Docker Compose START"
 echo "#############"
 
-/usr/local/bin/docker-compose stop
-/usr/local/bin/docker-compose rm -f
 /usr/local/bin/docker-compose pull
 /usr/local/bin/docker-compose up -d
 
@@ -46,14 +52,15 @@ echo ""
 echo "Docker Logging"
 echo "#############"
 
+rm /root/cephos-aart-config/nginx-reverse/www/logs/docker_nginx.log
 ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_reverse_nginx_1` /root/cephos-aart-config/nginx-reverse/www/logs/docker_nginx.log
 chmod +r /root/cephos-aart-config/nginx-reverse/www/logs/docker_nginx.log
 
+rm /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_shiny_1` /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 chmod +r /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 
-ln /srv/shinylog/ /root/cephos-aart-config/nginx-reverse/www/logs/shinylog/
-chmod -R +r /root/cephos-aart-config/nginx-reverse/www/logs/shinylog/
+chmod -R +r /root/cephos-aart-config/nginx-reverse/www/logs/shinylog
 
 echo ""
 echo ""
