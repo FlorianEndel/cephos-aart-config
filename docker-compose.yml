@@ -23,5 +23,5 @@ services:
     volumes:
       #- /root/cephos-aart-config/shiny/index.html:/srv/shiny-server/index.html
       - /root/cephos-aart:/srv/shiny-server/cephos-aart
-      - /root/cephos-aart-config/nginx-reverse/www/logs/shinylog:/var/log
+      #- /root/cephos-aart-config/nginx-reverse/www/logs/shinylog:/var/log
 

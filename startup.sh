@@ -69,7 +69,7 @@ rm /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_shiny_1` /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 chmod +r /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 
-chmod -R +r /root/cephos-aart-config/nginx-reverse/www/logs/shinylog
+#chmod -R +r /root/cephos-aart-config/nginx-reverse/www/logs/shinylog
 
 
 
