@@ -13,13 +13,14 @@ services:
       - /root/cephos-aart-config/nginx-reverse/www:/usr/share/nginx/html:ro
       #- /root/cephos-aart-config/nginx-reverse/SSL:/var/ssl
       #- /root/cephos-aart-config/nginx-reverse/htaccess:/var/htaccess
-      #- /root/cephos-aart-config/nginx-reverse/nginx:/etc/nginx
-
+      - /root/cephos-aart-config/nginx-reverse/nginx/:/etc/nginx/
+      
   shiny:
     image: floe/shiny-custom
     ports:
       - "80:3838"
     volumes:
-      - /aart:/root/cephos-aart
-
+      #- /root/cephos-aart-config/shiny/index.html:/srv/shiny-server/index.html
+      - /root/cephos-aart:/srv/shiny-server/cephos-aart
+      - /srv/shinylog/:/var/log/
 
