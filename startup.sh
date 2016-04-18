@@ -28,6 +28,9 @@ git clean -fd
 git reset --hard origin/master
 git pull -f
 
+# set permissions
+chmod a+w /root/cephos-aart/out.tex -R
+
 
 echo ""
 echo "CEPHOS AART Config"
@@ -46,6 +49,9 @@ echo "#############"
 
 /usr/local/bin/docker-compose pull
 /usr/local/bin/docker-compose up -d
+
+# add log directory to web
+docker exec cephosaartconfig_shiny_1 ln -s /var/log/shiny-server /srv/shiny-server/log
 
 
 echo ""
