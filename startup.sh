@@ -53,6 +53,9 @@ echo "#############"
 # add log directory to web
 docker exec cephosaartconfig_shiny_1 ln -s /var/log/shiny-server /srv/shiny-server/log
 
+## floe/shiny-custom:2016-04-18 --> Cairo is missing
+docker exec cephosaartconfig_shiny_1 R 'install.packages("Cairo")'
+
 
 echo ""
 echo "Docker Logging"
@@ -67,6 +70,8 @@ ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_shiny_1` /root/cepho
 chmod +r /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 
 chmod -R +r /root/cephos-aart-config/nginx-reverse/www/logs/shinylog
+
+
 
 echo ""
 echo ""

@@ -15,8 +15,9 @@ services:
       #- /root/cephos-aart-config/nginx-reverse/htaccess:/var/htaccess
       - /root/cephos-aart-config/nginx-reverse/nginx/:/etc/nginx/
       
-  shiny:
-    image: floe/shiny-custom
+  shiny:    
+    #image: floe/shiny-custom:2016-04-11 
+    image: floe/shiny-custom:2016-04-18
     ports:
       - "80:3838"
     volumes:
