@@ -1,11 +1,20 @@
 #! /bin/bash
 
+cd /root/cephos-aart
+
 echo ""
 echo ""
 echo "###########################################################"
 echo "START"
 echo `date +%Y-%m-%d\ %H:%M`
 echo ""
+
+
+echo ""
+echo "Show IP"
+echo "#############"
+
+./ip-show.sh
 
 
 
@@ -23,7 +32,6 @@ echo ""
 echo "CEPHOS AART"
 echo "#############"
 
-cd /root/cephos-aart
 git clean -fd
 git reset --hard origin/master
 git pull -f
