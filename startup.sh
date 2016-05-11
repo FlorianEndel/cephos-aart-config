@@ -11,14 +11,6 @@ echo ""
 
 
 echo ""
-echo "Show IP"
-echo "#############"
-
-./ip-show.sh
-
-
-
-echo ""
 echo "Docker Compose STOP"
 echo "#############"
 
@@ -80,6 +72,15 @@ ln `docker inspect --format='{{.LogPath}}' cephosaartconfig_shiny_1` /root/cepho
 chmod +r /root/cephos-aart-config/nginx-reverse/www/logs/docker_shiny.log
 
 #chmod -R +r /root/cephos-aart-config/nginx-reverse/www/logs/shinylog
+
+
+
+echo ""
+echo "Show IP"
+echo "#############"
+
+./ip-show.sh
+
 
 
 
