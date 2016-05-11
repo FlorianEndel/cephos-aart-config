@@ -1,14 +1,5 @@
 #!/bin/sh
 
-if [ "$METHOD" = loopback ]; then
-    exit 0
-fi
-
-# Only run from ifup.
-if [ "$MODE" != start ]; then
-    exit 0
-fi
-
 cp /etc/issue.net /etc/issue
 
 
